@@ -1,0 +1,22 @@
+﻿<html>
+<head>
+  
+        <script type="text/javascript">
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 0);
+            window.onunload = function () { null };
+        </script>
+    
+
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <div class="alert alert-danger" role="alert">
+            Do you sure you want to logout
+            <input type="submit" value="Logout" class="btn btn-danger" />
+        </div>
+    
+    </form>
+
+</body>
+</html>

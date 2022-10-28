@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BookTheShowEntity.Theatrev>
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+<div>
+    <a asp-controller="Theatre" asp-action="TheatreEntry">Theatre Entry</a>
+    <hr />
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h3>Theatres</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>TheatreId</th>
+                    <th>TheatreName</th>
+                    <th>TheatrevAddress</th>
+                    <th>TheatreComments</th>\
+                    <th>Edit Theatre</th>
+                    <th>Deletet Theatre</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var theatre in Model)
+                {
+                    <tr>
+                        <td>@theatre.TheatrevId</td>
+                        <td>@theatre.TheatrevName</td>
+                        <td>@theatre.TheatrevAddress</td>
+                        <td>@theatre.TheatrevComments</td>
+
+                        <td>
+                            <a asp-controller="Theatre" asp-action="EditTheatre"
+                           asp-route-TheatreId="@theatre.TheatrevId">Edit</a>
+                        </td>
+
+                        <td>
+                            <a asp-controller="Theatre" asp-action="DeleteTheatre"
+                           asp-route-TheatreId="@theatre.TheatrevId">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

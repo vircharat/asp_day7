@@ -1,0 +1,50 @@
+﻿
+@model IEnumerable<BookTheShowEntity.Userv>
+
+@*<div>
+    <a asp-controller="User" asp-action="Login">Login</a>
+</div>
+<div>
+    <a asp-controller="User" asp-action="Register">UserRegister</a>
+    <hr />
+</div>*@
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>Users</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>UserId</th>
+                    <th>UserName</th>
+                    <th>UserEmail</th>
+                    <th>UserPassword</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var User in Model)
+                {
+                    <tr>
+                        <td>@User.UservId</td>
+                        <td>@User.UservName</td>
+                        <td>@User.UservEmail</td>
+                        <td>@User.UserPassword</td>
+
+                        <td>
+                            <a asp-controller="User" asp-action="EditUser"
+                           asp-route-UserId="@User.UservId">Edit</a>
+                        </td>
+
+                        <td>
+                            <a asp-controller="User" asp-action="DeleteUser"
+                           asp-route-UserId="@User.UservId">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

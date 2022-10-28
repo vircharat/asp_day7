@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BookTheShowEntity.Theatrev>
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>Theatres</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>TheatreId</th>
+                    <th>TheatreName</th>
+                    <th>TheatrevAddress</th>
+                    <th>TheatreComments</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var theatre in Model) 
+                {
+                    <tr>
+                        <td>@theatre.TheatrevId</td>
+                        <td>@theatre.TheatrevName</td>
+                        <td>@theatre.TheatrevAddress</td>
+                        <td>@theatre.TheatrevComments</td>
+                      
+                      
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

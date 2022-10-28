@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BookTheShowEntity.Admin>
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+@*<div>
+    <a asp-controller="Admin" asp-action="Login">Login</a>
+</div>
+<div>
+    <a asp-controller="Admin" asp-action="Register">AdminRegister</a>
+    <hr />
+</div>*@
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>Admins</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>AdminId</th>
+                    <th>AdminName</th>
+                    <th>AdminEmail</th>
+                    <th>AdminPassword</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Admin in Model)
+                {
+                    <tr>
+                        <td>@Admin.AdminId</td>
+                        <td>@Admin.AdminName</td>
+                        <td>@Admin.AdminEmail</td>
+                        <td>@Admin.AdminPassword</td>
+
+                        <td>
+                            <a asp-controller="Admin" asp-action="EditAdmin"
+                           asp-route-AdminId="@Admin.AdminId">Edit</a>
+                        </td>
+
+                        <td>
+                            <a asp-controller="Admin" asp-action="DeleteAdmin"
+                           asp-route-AdminId="@Admin.AdminId">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+  </div>

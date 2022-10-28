@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BookTheShowEntity.Moviev>
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+<div>
+    <a asp-controller="Movie" asp-action="MovieEntry">Movie Entry</a>
+    <hr />
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>Movies</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>MovieId</th>
+                    <th>MovieName</th>-
+                    <th>MovieDescription</th>
+                    <th>MovieType</th>
+                    <th>Movie Ticket Price</th>
+                    <th>Movie Poster</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model) @*mvc controller name is asp controller and its function name is asp-action and asp-route-moveid (is used in url means ) we need pass the same argument in  editmovie of moviecontroller (route name) here which is MovieId
+                which can be written as http://localhost:32344/Movies/edit movie?movieid=2//
+                *@
+                {
+                    string imageBase64Data = Convert.ToBase64String(movie.ImgPoster);
+                    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+                    <tr>
+                        <td>@movie.MovievId</td>
+                        <td>@movie.MovievName</td>
+                        <td>@movie.MovievDesc</td>
+                        <td>@movie.MovievType</td>
+                        <td>@movie.MovieTicketPrice</td>
+                        <td><img height="50" width="50" src="@imageDataURL" /></td>
+
+                        <td>
+                            <a asp-controller="Movie" asp-action="EditMovie"
+                           asp-route-MovieId="@movie.MovievId">Edit</a>
+                        </td>
+
+                        <td>
+                            <a asp-controller="Movie" asp-action="DeleteMovie"
+                           asp-route-MovieId="@movie.MovievId">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

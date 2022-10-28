@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BookTheShowEntity.ShowTimev>
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>ShowTime</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ShowId</th>
+                    <th>ShowTimevv</th>
+                    <th>TheatrevId</th>
+                    <th>MovievId</th>
+                    <th>MovieName</th>
+                    <th>MovievDesc</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Show in Model)
+                {
+                    <tr>
+                        <td>@Show.ShowvId</td>
+                        <td>@Show.ShowTimevv</td>
+                        <td>@Show.TheatrevId</td>
+                        <td>@Show.MovievId</td>
+                        <td>@Show.moviev.MovievName</td>
+                        <td>@Show.moviev.MovievDesc</td>
+
+                   
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

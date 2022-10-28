@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BookTheShowEntity.Moviev>
+
+<div class=" row">
+@foreach (var movie in Model)
+{
+    string imageBase64Data = Convert.ToBase64String(movie.ImgPoster);
+    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+   
+        <div class="col-md-4">
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                     data-mdb-ripple-color="light">
+                        <img height="150"  src="@imageDataURL" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@movie.MovievName</h5>
+                            <p class="card-text">@movie.MovievDesc</p>
+                            <a asp-controller="Booking" asp-action="BookingEntry" type="button" class="btn btn-primary">Book</a>
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+
+    }
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>Movies</h3>
+        <hr/>
+        <table class="table table-light table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>MovieId</th>
+                <th>MovieName</th>-
+                <th>MovieDescription</th>
+                <th>MovieType</th>
+                <th>Movie Ticket Price</th>
+                <th>Movie Poster</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model) @*mvc controller name is asp controller and its function name is asp-action and asp-route-moveid (is used in url means ) we need pass the same argument in  editmovie of moviecontroller (route name) here which is MovieId
+                which can be written as http://localhost:32344/Movies/edit movie?movieid=2//
+            *@
+            {
+                    string imageBase64Data = Convert.ToBase64String(movie.ImgPoster);
+                    string imageDataURL = string.Format("data:image/jpg;base64,{0}",imageBase64Data);
+                <tr>
+                    <td>@movie.MovievId</td>
+                    <td>@movie.MovievName</td>
+                    <td>@movie.MovievDesc</td>
+                    <td>@movie.MovievType</td>
+                    <td>@movie.MovieTicketPrice</td>
+                    <td><img height="50" width="50" src="@imageDataURL" /></td>
+                
+          
+                </tr>
+                
+            }
+        </tbody>
+        </table>
+    </div>
+</div>
